@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+:root{
+    --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
+    color: white;
+}
+
+main{
+    background-image: url('images/diamond-pattern.png') ;
+    background-blend-mode: overlay;
+    background-size: 400%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: gradient 100s linear infinite;
+    overflow: hidden;
+    box-shadow: inset 0 0 100px rgb(255, 255, 255);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+html{
+    font-family: 'Courgette', cursive;
+    background-image: linear-gradient(#ebe3d8, #c4ac89);
+    /* height: 100%;
+    width: 100%; */
+    filter: brightness(80%);
+    background-size: auto;
+    padding: 0;
+    margin: 0;
+}
+
+#logo{
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+    fill: none;
+    stroke: rgb(255, 255, 255);
+    stroke-width: 10px;
+    text-align: center;
+}
+
+#form-container{
+    width: 400px;
+    border: 3px solid rgba(89, 78, 61, 0.668);
+    box-shadow: var(--shadow);
+    background-color: rgba(196, 172, 137, 0.8);
+    padding: 30px;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    /* transition: 1s ease-out; */
+}
+
+#welcome-message{
+    text-align: center;
+    margin: 20px;
+}
+
+#welcome-message h1{
+    font-size: 60px;
+    font-weight: 700;
+    color: none;
+}
+#welcome-message p{
+    font-size: 24px;
+}
+
+.button{
+    width: 100%;
+    border: 2px solid rgba(89, 78, 61, 0.668);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: .5s ease-out;
+    background: inherit;
+    color: inherit;
+    outline: inherit;
+    font: inherit;
+}
+.button:hover{
+    background-color: white;
+    transition: .5s ease-out;
+    color: black;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.account-form{
+    text-align: center;
+}
+
+thead, th, tbody, td, tr{
+    border: 2px solid rgba(89, 78, 61, 0.668);
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+table{
+    width: 100%;
+    column-width: auto;
+    padding-bottom: 40px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    margin: 20px;
+    border: 2px solid rgba(89, 78, 61, 0.668);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+    justify-content: space-between;
+    align-self: center;
+}
+
+#copy-link{
+    text-align: center;
+    -webkit-text-stroke: .5px rgba(89, 78, 61, 0.668);
+    font-size: 40px;
+    text-shadow: 5px 5px 5px rgba(89, 78, 61, 0.668);
+}
+
+.table-container{
+    height: 300px;
+    overflow: scroll;
+}
