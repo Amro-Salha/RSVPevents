@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+
+   <section id= "form-container">
+
+        <div id= "logo"></div>
+        <h1>Sorry we missed you!</h1>
+        <h2>Invitation to this event has now closed!</h2>
+
+    </section>
+       {% if user.is_authenticated %}
+    {% else %}
+        <a href="{% url 'home' %}"><div id = "bottom-bar"><h1>Host your own event with DidYouRSVP.com</h1></div></a>
+    {% endif %}
+</main>
+
+
+{% endblock content %}

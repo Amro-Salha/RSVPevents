@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+
+    <section id= "form-container">
+        <div id= "logo">
+        </div>
+        <div class="account-form">
+            <h1>Edit {{ event.name }}</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                <div class='button'>
+                    <input class="delete" type="submit" value="Save Changes">
+                </div>
+            </form>
+        </div>
+
+        <a href="{% url 'event_details' event.id %}">
+            <div class="button">Back to Event</div>
+        </a>
+
+    </section>
+
+</main>
+
+{% endblock content %}

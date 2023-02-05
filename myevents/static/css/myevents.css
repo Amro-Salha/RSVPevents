@@ -2,19 +2,21 @@
 
 :root{
     --shadow:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
-    color: white;
+    color: black;
 }
 
-main{
-    background-image: url('images/diamond-pattern.png') ;
+#bg{
+    background-image: url('images/bg.png');
     background-blend-mode: overlay;
-    background-size: 400%;
+    opacity: .7;
+    background-size: 300%;
     position: absolute;
     width: 100%;
     height: 100%;
     animation: gradient 100s linear infinite;
     overflow: hidden;
-    box-shadow: inset 0 0 100px rgb(255, 255, 255);
+    box-shadow: inset 0 0 100px silver;
+    filter: brightness(150%);
 }
 
 @keyframes gradient {
@@ -28,20 +30,17 @@ main{
 
 html{
     font-family: 'Courgette', cursive;
-    background-image: linear-gradient(#ebe3d8, #c4ac89);
-    /* height: 100%;
-    width: 100%; */
-    filter: brightness(80%);
-    background-size: auto;
-    padding: 0;
-    margin: 0;
+    background: linear-gradient(rgb(98, 98, 98), silver);
 }
 
 #logo{
-    display: block;
-    width: 100px;
+    /* display: block; */
+    background-image: url('images/logo.png');
+    background-size: cover;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
-    fill: none;
+    fill: white;
     stroke: rgb(255, 255, 255);
     stroke-width: 10px;
     text-align: center;
@@ -49,18 +48,33 @@ html{
 
 #form-container{
     width: 400px;
-    border: 3px solid rgba(89, 78, 61, 0.668);
-    box-shadow: var(--shadow);
-    background-color: rgba(196, 172, 137, 0.8);
+    border: 3px solid black;
+    box-shadow: 0px 0px 2px black;
+    background-color: rgba(192, 192, 192, 0.9);
     padding: 30px;
     border-radius: 5px;
     position: fixed;
-    top: 50%;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#top-bar{
+    width: 80vw;
+    height: fit-content;
+    border: 3px solid rgba(255, 255, 255, 0.668);
+    box-shadow: var(--shadow);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    position: fixed;
+    top: 7.5vh;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-
-    /* transition: 1s ease-out; */
+    color: rgb(255, 255, 255);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 #welcome-message{
@@ -79,7 +93,7 @@ html{
 
 .button{
     width: 100%;
-    border: 2px solid rgba(89, 78, 61, 0.668);
+    border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
     box-sizing: border-box;
@@ -92,9 +106,9 @@ html{
     font: inherit;
 }
 .button:hover{
-    background-color: white;
+    background-color: black;
     transition: .5s ease-out;
-    color: black;
+    color: white;
     cursor: pointer;
 }
 a{
@@ -107,7 +121,7 @@ a{
 }
 
 thead, th, tbody, td, tr{
-    border: 2px solid rgba(89, 78, 61, 0.668);
+    border: 2px solid rgba(0, 0, 0, 0.668);
     text-align: center;
     padding: 10px;
     border-radius: 5px;
@@ -122,7 +136,7 @@ table{
     display: grid;
     grid-template-columns: repeat(2, auto);
     margin: 20px;
-    border: 2px solid rgba(89, 78, 61, 0.668);
+    border: 2px solid rgba(0, 0, 0, 0.668);
     border-radius: 5px;
     padding: 10px;
     text-align: left;
@@ -141,4 +155,24 @@ table{
 .table-container{
     height: 300px;
     overflow: scroll;
+}
+
+.delete{
+    all: unset;
+}
+
+#bottom-bar{
+    width: 1000px;
+    height: fit-content;
+    border: 3px solid rgba(255, 255, 255, 0.668);
+    box-shadow: var(--shadow);
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    position: fixed;
+    top: 7.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding-bottom: 5px;
 }

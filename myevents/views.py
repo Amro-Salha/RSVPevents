@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from .models import Event, Guests
 from .forms import EventForm, GuestsForm
 
 # Create your views here.
 def home(request):
     return render(request, 'myevents/home.html')
+
+def access_denied(request):
+    return render(request, 'myevents/access_denied.html')
 
 @login_required
 def user_home(request):
@@ -46,15 +50,20 @@ def create_event(request):
 
 def invite(request, id):
     event = Event.objects.get(id = id)
-    if request.method == "POST":
-        form = GuestsForm(request.POST)
-        if form.is_valid():
-            guest = form.save(False)
-            guest.event = event
-            guest.save()
-            return(redirect("guest_list", event.id))
+    event_date = event.event_date
+    # event_date = timezone.make_aware(timezone.datetime.strptime(event_date, '%Y-%m-%d'))
+    if timezone.now() > event_date:
+        return redirect('access_denied')
     else:
-        form = GuestsForm()
+        if request.method == "POST":
+            form = GuestsForm(request.POST)
+            if form.is_valid():
+                guest = form.save(False)
+                guest.event = event
+                guest.save()
+                return(redirect("guest_list", event.id))
+        else:
+            form = GuestsForm()
     context = {
         "form":form,
         "event":event
@@ -80,3 +89,31 @@ def guest_list(request, id):
         "total_guests":total_guests
     }
     return render(request, "myevents/guest_list.html", context)
+
+@login_required
+def edit_event(request, id):
+    event = get_object_or_404(Event, id=id)
+    if request.method == "POST":
+        form = EventForm(request.POST, instance = event)
+        if form.is_valid():
+            form.save()
+            return redirect("event_details", id=id)
+    else:
+        form = EventForm(instance = event)
+
+    context = {
+        "event" : event,
+        "form" : form,
+    }
+    return render(request, "myevents/edit.html", context)
+
+@login_required
+def delete_event(request, id):
+    event = get_object_or_404(Event, id=id)
+    if request.method == "POST":
+        event.delete()
+        return redirect("my_events")
+    context = {
+        "event":event,
+    }
+    return render(request, "myevents/delete.html", context)
